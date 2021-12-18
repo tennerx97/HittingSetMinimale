@@ -10,7 +10,7 @@ matrixShape=matrix.shape #contiene n+1 righe la prima contiene le variabili, e m
 
 mhs=[]
 MBase(matrix)
-print('fine')
+#print(matrixShape)
 
 
 

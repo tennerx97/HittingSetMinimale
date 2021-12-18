@@ -26,8 +26,11 @@ def load_matrix():
     ##cont è un array di array
 
     try:
+
         mat = np.reshape(cont, (k, j))
-        temp = pd.DataFrame(mat)
+        mat_data=mat[1:,:]
+        mat_names=mat[0,:]
+        temp = pd.DataFrame(mat_data,columns=mat_names)
         temp.to_csv("log.csv")
         #print(temp.head())
         return temp
