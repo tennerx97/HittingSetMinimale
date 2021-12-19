@@ -3,7 +3,8 @@ import csv
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
-    matrix = open("./benchmarks2/74L85.000.matrix", "r")
+    matrix = open("./benchmarks2/74283.019.matrix", "r")
+    #74L85.000.matrix
     #c2670.039.matrix va senza map c5315.260.matrix
     content = matrix.read()
     #print(content)
