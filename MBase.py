@@ -3,6 +3,7 @@ import csv
 import pandas as pd
 import asyncio
 
+
 def max(x):
     return x.columns[-1]
 
@@ -16,7 +17,7 @@ def succ(x,df):
 
 def check(x,y):
     z =np.sum([x,y],axis=0)
-    print(z)
+    #print(z)
     x_zeros=np.count_nonzero(x == 0)
     y_zeros = np.count_nonzero(y == 0)
     z_zeros =np.count_nonzero(z == 0)
@@ -38,36 +39,30 @@ def check2(x):
         print("MHS")
 
 def MBase(A):
-    check2(np.array([1, 1]))
-    check(np.array([0,0]),np.array([1,1]))
+    #check2(np.array([1, 1]))
+
+    #check(np.array([0,0]),np.array([1,1]))
     queue = asyncio.Queue() #creo coda
     #row_matrix=len(A.index)
     #queue.get_nowait() #toglie dalla coda
     A.insert(0, "zero", 0, allow_duplicates=False)
     queue.put_nowait(A['zero'])  # inserisce nella coda
+    max_A=A.shape[1] #ultimo indice del dataframe per fare il ciclo pù tardi
 
     while not queue.empty():
-        delta=pd.DataFrame(queue.get_nowait())
+        delta=pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
+        max_delta = max(delta)
+        succ_delta=(delta.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
+
+        for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
+
+            gamma=delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
+            print(gamma)                                 # print gamma
+
+
+
         #print(delta, ' elem tolto')
         #for elem=succ(max(delta)) <= max(A):
-        succ_start=succ(max(delta),A)
+        #succ_start=succ(max(delta),A)
         #for elem in range(succ,A.columns, 1):
           #  print(A[elem])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
