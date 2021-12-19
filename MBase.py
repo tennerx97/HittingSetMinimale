@@ -2,6 +2,7 @@ import numpy as np
 import csv
 import pandas as pd
 import asyncio
+from Check import checka
 
 
 def max(x):
@@ -57,8 +58,9 @@ def MBase(A):
         for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
 
             gamma=delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
-            print(gamma)                                 # print gamma
-
+            result=checka(gamma)                                # print gamma
+            if result!="KO" and not column==A.columns[-1]:
+                print(gamma, result)
 
 
         #print(delta, ' elem tolto')
