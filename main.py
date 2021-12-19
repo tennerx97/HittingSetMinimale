@@ -10,8 +10,8 @@ start_time = time.time()
 matrix=load_matrix()
 matrixShape=matrix.shape #contiene n+1 righe la prima contiene le variabili, e m colonne da 1 a m variabile
 mhs=[]
-MBase(matrix)
-
+c=MBase(matrix)
+print(c," mhs trovati")
 
 
 print("--- %s seconds ---" % (time.time() - start_time))

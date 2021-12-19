@@ -46,7 +46,5 @@ def build(val1,val2):                        #creo i valori dell'array z
             val1[i]=0
         else:
             val1[i]=1
-
-    print(val1,"test or")
     return val1
 

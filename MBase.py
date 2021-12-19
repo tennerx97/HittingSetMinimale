@@ -51,7 +51,7 @@ def check2(x):
 
 def MBase(A):
     #check2(np.array([1, 1]))
-
+    count=0
     #check(np.array([0,0]),np.array([1,1]))
     queue = asyncio.Queue() #creo coda
     #row_matrix=len(A.index)
@@ -59,11 +59,11 @@ def MBase(A):
     A.insert(0, "zero", 0, allow_duplicates=False)
     queue.put_nowait(A['zero'])  # inserisce nella coda
     max_A=A.shape[1] #ultimo indice del dataframe per fare il ciclo pù tardi
-    print(queue)
+    #print(queue)
     while not queue.empty():
         delta=pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
         max_delta = max(delta)
-        print(max_delta," max trovato")
+        #print(max_delta," max trovato")
         succ_delta=(A.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
 
         for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
@@ -78,6 +78,7 @@ def MBase(A):
                 queue.put_nowait(df)
             if result[0] == "MHS":
                 print(result[1], " mhs")
+                count=count+1
 
 
         #print(delta, ' elem tolto')
@@ -85,3 +86,4 @@ def MBase(A):
         #succ_start=succ(max(delta),A)
         #for elem in range(succ,A.columns, 1):
           #  print(A[elem])
+    return count
