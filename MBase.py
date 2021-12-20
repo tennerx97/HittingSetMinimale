@@ -1,21 +1,18 @@
 import numpy as np
 import csv
 import pandas as pd
-import asyncio
+import asyncio,sys
 from Check import checka
 
 
 def max(x):
     j= x.columns[-1]
     if type(j) is tuple:
-        print(j[-1], " ultimo")
+        #print(j[-1], " ultimo")
         return j[-1]
     else:
-        print(j, " ultimo")
+        #print(j, " ultimo")
         return j
-
-
-    return j
 
 
 def succ(x,df):
@@ -78,6 +75,7 @@ def MBase(A):
                 queue.put_nowait(df)
             if result[0] == "MHS":
                 print(result[1], " mhs")
+
                 count=count+1
 
 

@@ -5,7 +5,6 @@ def checka(T):
     x_val=np.array(T[x_name].values,dtype=int)
     y_name = T.columns.values[1]
     y_val=np.array(T[y_name].values,dtype=int)
-    res=""
 
     if x_name=="zero":
         y_zeros = np.count_nonzero(y_val == 0)
@@ -42,9 +41,7 @@ def checka(T):
 
 def build(val1,val2):                        #creo i valori dell'array z
     for i in range(len(val1)):
-        if val1[i]==0 and val2[i]==0:
-            val1[i]=0
-        else:
+        if not(val1[i]==0 and val2[i]==0):
             val1[i]=1
     return val1
 

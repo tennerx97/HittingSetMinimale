@@ -3,13 +3,12 @@ import csv
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
-    matrix = open("./benchmarks2/74L85.009.matrix", "r")
-    #74L85.000.matrix
+    matrix = open("./benchmarks2/74L85.000.matrix", "r")
+    #74L85.000.matrix  matrice facile
     #c2670.039.matrix va senza map c5315.260.matrix
     content = matrix.read()
-    #print(content)
+    matrix.close()
     content = content[:-1]  ##tolgo l'ultima riga che è vuota
-    #print(content)
     words = content.split(whiteSpaceRegex)
     words = words[5].replace(" Map ", "")  ##tolgo il map all'inizio della matrice
 
@@ -29,10 +28,10 @@ def load_matrix():
     try:
 
         mat = np.reshape(cont, (k, j))
-        mat_data=mat[1:,:]
-        mat_names=mat[0,:]
-        temp = pd.DataFrame(mat_data,columns=mat_names)
-        temp.to_csv("log.csv")
+        mat_data=mat[1:,:]                              #sottomatrice con i dati
+        mat_names=mat[0,:]                              #riga con i nomi degli indici
+        temp = pd.DataFrame(mat_data,columns=mat_names) #creo il dataframe sul quale lavorare
+        #temp.to_csv("log.csv")
         #print(temp.head())
         return temp
     except:
