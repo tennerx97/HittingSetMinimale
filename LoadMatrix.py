@@ -1,5 +1,6 @@
 import numpy as np
 import csv
+from PreElaborazione import pre
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
@@ -24,12 +25,17 @@ def load_matrix():
 
     j = len(cont[0])
     ##cont è un array di array
+    print("ciao")
 
     try:
 
         mat = np.reshape(cont, (k, j))
         mat_data=mat[1:,:]                              #sottomatrice con i dati
         mat_names=mat[0,:]                              #riga con i nomi degli indici
+        print(k-1,j, "dim iniziale")
+        mat_data,mat_names = pre(mat_data,mat_names,k-1,j)
+        print(mat_data, "new daat")
+
         temp = pd.DataFrame(mat_data,columns=mat_names) #creo il dataframe sul quale lavorare
         #temp.to_csv("log.csv")
         #print(temp.head())
