@@ -4,7 +4,7 @@ from PreElaborazione import pre
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
-    matrix = open("./benchmarks2/74L85.000.matrix", "r")
+    matrix = open("./benchmarks2/74181.022.matrix", "r")
     #74L85.000.matrix  matrice facile
     #c2670.039.matrix va senza map c5315.260.matrix
     content = matrix.read()
