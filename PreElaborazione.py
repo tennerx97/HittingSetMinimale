@@ -19,8 +19,10 @@ def togliRighe(mat, n, m):
                 if res == 2:
                     #mat = np.delete(newmat, i, axis=0)
                     newmat.append(j)
+                    print(j," contiene ", i)
                 elif res == 1 or res == 0:
                     #mat = np.delete(mat, j, axis=0)
+                    print(i, " contiene ", j)
                     newmat.append(i)
     newmat = np.array(newmat)
     newmat=np.unique(newmat)

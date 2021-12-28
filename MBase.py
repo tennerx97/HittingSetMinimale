@@ -2,7 +2,7 @@ import numpy as np
 import csv
 import pandas as pd
 import asyncio,sys
-from Check import checka
+from checkmod import checka
 
 
 def max(x):
@@ -49,6 +49,7 @@ def check2(x):
 def MBase(A):
     #check2(np.array([1, 1]))
     count=0
+    setmhs=[]
     #check(np.array([0,0]),np.array([1,1]))
     queue = asyncio.Queue() #creo coda
     #row_matrix=len(A.index)
@@ -66,7 +67,8 @@ def MBase(A):
         for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
 
             gamma=delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
-            result=checka(gamma)                                # print gamma
+            #print(gamma," gamma")
+            result=checka(gamma,setmhs)                                # print gamma
             if result[0]=="OK" and not column==A.columns[-1]:    #result [0] ha l'esito
                 temp=result[1]                                   #result[1] ha il nome colonna gamma e valori
 
@@ -74,8 +76,8 @@ def MBase(A):
                 df = pd.DataFrame(temp)
                 queue.put_nowait(df)
             if result[0] == "MHS":
+                setmhs.append((result[1])[0])
                 print(result[1], " mhs")
-
                 count=count+1
 
 
