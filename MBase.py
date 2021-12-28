@@ -86,4 +86,4 @@ def MBase(A):
         #succ_start=succ(max(delta),A)
         #for elem in range(succ,A.columns, 1):
           #  print(A[elem])
-    return count
+    return count, setmhs

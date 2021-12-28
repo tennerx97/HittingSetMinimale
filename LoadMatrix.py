@@ -4,7 +4,9 @@ from PreElaborazione import pre
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
-    matrix = open("./benchmarks2/74L85.002.matrix", "r")
+    matrix_path = "./benchmarks2/74L85.002.matrix"
+    matrix = open(matrix_path, "r")
+    matrix_name = matrix_path[14:23]
     #74L85.000.matrix  matrice facile
     #c2670.039.matrix va senza map c5315.260.matrix
     content = matrix.read()
@@ -25,14 +27,13 @@ def load_matrix():
 
     j = len(cont[0])
     ##cont è un array di array
-    print("ciao")
 
     try:
 
         mat = np.reshape(cont, (k, j))
         mat_data=mat[1:,:]                              #sottomatrice con i dati
         mat_names=mat[0,:]                              #riga con i nomi degli indici
-        print(k-1,j, "dim iniziale")
+        matrix_shape_start = (k-1,j)
         #mat_data,mat_names = pre(mat_data,mat_names,k-1,j)
         mat_data=rep_vect(mat_data,mat_names)
 
@@ -42,12 +43,12 @@ def load_matrix():
 
         #temp.to_csv("log.csv")
         #print(temp.head())
-        return temp
+        return temp, matrix_name, matrix_shape_start
     except:
         print('invalid matrix dimension')
         return 0
 
-def rep_vect(mat_data,mat_names):
+def rep_vect(mat_data, mat_names):
     new_collen = len(mat_data[0])
     newl = len(mat_data)
     for i in range(new_collen):
