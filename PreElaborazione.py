@@ -3,10 +3,10 @@ import numpy as np
 
 
 def pre(mat, name, n, m):
-    mat = togliRighe(mat, n, m)
-    mat, name = togliColonne(mat, name, m)
+    mat, dropped_row = togliRighe(mat, n, m)
+    mat, name , dropped_name = togliColonne(mat, name, m)
 
-    return mat, name
+    return mat, name, dropped_name, dropped_row
 
 
 def togliRighe(mat, n, m):
@@ -30,7 +30,7 @@ def togliRighe(mat, n, m):
         mat = np.delete(mat, i, axis=0)
 
     print(newmat, "new less rig")
-    return mat
+    return mat, newmat
 
 
 def checkSub(a, b,m):  # ritorna -1 se non c'è sottoinsieme, 1 se il primo array ingloba il secondo, 2 se il secondo array ingloba il primo/ theta(m)
@@ -56,6 +56,7 @@ def checkSub(a, b,m):  # ritorna -1 se non c'è sottoinsieme, 1 se il primo arra
 def togliColonne(mat, name, m):  # ricalcolo n perchè potrebbe essere minore
     n = len(mat)
     newname = []
+    dropped_name = []
     newmat = []
     # print(mat[:,1])
 
@@ -64,16 +65,16 @@ def togliColonne(mat, name, m):  # ricalcolo n perchè potrebbe essere minore
         # print(i)
         for j in range(n):  # riga
             # print(j, i)
-
             if mat[j, i] == "0":
                 rem = rem + 1
             # print(rem)
-
         if rem != n:
             # print(mat[:, i], i)
             newname.append(name[i])
             newmat.append(mat[:, i])
+        else:
+            dropped_name.append(name[i])
 
     newmat = np.array(newmat)
     print(newname, newmat.T, newmat.T.shape, " forma")
-    return newmat.T, newname
+    return newmat.T, newname, dropped_name

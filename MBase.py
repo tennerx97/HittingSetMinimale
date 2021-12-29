@@ -6,13 +6,9 @@ from checkmod import checka
 
 
 def max(x):
-    j= x.columns[-1]
-    if type(j) is tuple:
-        #print(j[-1], " ultimo")
-        return j[-1]
-    else:
-        #print(j, " ultimo")
-        return j
+    j = x.columns[-1]
+    list = str.split(j, ",")
+    return list[-1]
 
 
 def succ(x,df):
@@ -61,23 +57,25 @@ def MBase(A):
     while not queue.empty():
         delta=pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
         max_delta = max(delta)
-        #print(max_delta," max trovato")
         succ_delta=(A.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
 
         for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
 
             gamma=delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
             #print(gamma," gamma")
-            result=checka(gamma,setmhs)                                # print gamma
-            if result[0]=="OK" and not column==A.columns[-1]:    #result [0] ha l'esito
-                temp=result[1]                                   #result[1] ha il nome colonna gamma e valori
+            result=checka(gamma,setmhs)
+            names = result[1]  # result[1] ha il nome colonna gamma e valori
+            value = result[2]
+            #print("sto lavorando")
 
-                temp = {temp[0]: temp[1]}
+            if result[0]=="OK" and not column==A.columns[-1]:    #result [0] ha l'esito
+
+                temp = {names: value}
                 df = pd.DataFrame(temp)
                 queue.put_nowait(df)
             if result[0] == "MHS":
-                setmhs.append((result[1])[0])
-                print(result[1], " mhs")
+                setmhs.append(names)
+                print(names, " mhs")
                 count=count+1
 
 

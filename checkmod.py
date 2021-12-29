@@ -5,9 +5,14 @@ import numpy as np
 
 def checka(T, setmhs):
     x_name = T.columns.values[0]
+
     x_val = np.array(T[x_name].values, dtype=object)
     y_name = T.columns.values[1]
     y_val = np.array(T[y_name].values, dtype=object)
+    # print(type(x_name))
+    # print(type(y_name))
+    variable_list=""
+    z=""
 
     if x_name == "zero":
         y_zeros = np.count_nonzero(y_val == '0')
@@ -18,20 +23,19 @@ def checka(T, setmhs):
         else:
             res = "MHS"
         if res != "KO":
-            Gamma = [y_name, y_val]
+            variable_list = y_name
+            z = y_val
+            Gamma = [variable_list, y_val]
         else:
             Gamma = ["", ""]
 
     else:
         # z = np.sum([x_val, y_val], axis=0)
-        #print(x_val, y_val, "2 vett")
+        # print(x_val, y_val, "2 vett")
 
         x_zeros = zeroCount(x_val)
-        #print("x testato")
         y_zeros = zeroCount(y_val)
-        # print(y_zeros)
         z = sumstr(x_val, y_val)
-        #print(z, 'è strano')
         z_zeros = zeroCount(z)
 
         if x_zeros == z_zeros or y_zeros == '0':
@@ -42,25 +46,27 @@ def checka(T, setmhs):
             res = "MHS"
 
         if res != "KO":
-            z_name = x_name, y_name
+            variable_list = x_name + "," + y_name
+            # z_name = x_name,y_name
+
             # print("len z indez", len(z_name))
             if res == "MHS":
 
-                if finalCheck(z_name, z):
+                if finalCheck(variable_list, z):
                     res = "MHS"
                 else:
                     res = "KO"
 
-            Gamma = [z_name, z]
+            Gamma = [variable_list, z]
         else:
             Gamma = ["", ""]
-    # print(res,"res è")
-    return res, Gamma
+
+    return res, variable_list, z
 
 
 def finalCheck(names, z):
     count = 0
-
+    names = str.split(names, ",")
     for elem in names:
 
         if elem in z:

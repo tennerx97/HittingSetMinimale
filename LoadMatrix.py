@@ -4,7 +4,7 @@ from PreElaborazione import pre
 import pandas as pd
 def load_matrix():
     whiteSpaceRegex = ";;;";
-    matrix_path = "./benchmarks2/74L85.002.matrix"
+    matrix_path = "./benchmarks2/74181.041.matrix"
     matrix = open(matrix_path, "r")
     matrix_name = matrix_path[14:23]
     #74L85.000.matrix  matrice facile
@@ -34,7 +34,7 @@ def load_matrix():
         mat_data=mat[1:,:]                              #sottomatrice con i dati
         mat_names=mat[0,:]                              #riga con i nomi degli indici
         matrix_shape_start = (k-1,j)
-        #mat_data,mat_names = pre(mat_data,mat_names,k-1,j)
+        mat_data,mat_names,dropped_name, dropped_row = pre(mat_data,mat_names,k-1,j)
         mat_data=rep_vect(mat_data,mat_names)
 
         print(mat_data, "new daat")
@@ -43,7 +43,7 @@ def load_matrix():
 
         #temp.to_csv("log.csv")
         #print(temp.head())
-        return temp, matrix_name, matrix_shape_start
+        return temp, matrix_name, matrix_shape_start,dropped_name, dropped_row
     except:
         print('invalid matrix dimension')
         return 0
