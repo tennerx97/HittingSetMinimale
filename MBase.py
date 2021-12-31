@@ -1,15 +1,12 @@
 import numpy as np
-import csv
 import pandas as pd
 import asyncio,sys
 from checkmod import checka
-
 
 def max(x):
     j = x.columns[-1]
     list = str.split(j, ",")
     return list[-1]
-
 
 def succ(x,df):
     flag=False
@@ -43,40 +40,37 @@ def check2(x):
         print("MHS")
 
 def MBase(A):
-    #check2(np.array([1, 1]))
-    count=0
-    setmhs=[]
-    #check(np.array([0,0]),np.array([1,1]))
-    queue = asyncio.Queue() #creo coda
-    #row_matrix=len(A.index)
-    #queue.get_nowait() #toglie dalla coda
+    count = 0 # contatore degli mhs
+    setmhs = [] # set degli mhs
+    queue = asyncio.Queue() # creo la coda
+
     A.insert(0, "zero", 0, allow_duplicates=False)
     queue.put_nowait(A['zero'])  # inserisce nella coda
-    max_A=A.shape[1] #ultimo indice del dataframe per fare il ciclo pù tardi
-    #print(queue)
+    max_A=A.shape[1] # ultimo indice del dataframe per fare il ciclo pù tardi
+
     while not queue.empty():
-        delta=pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
+        delta = pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
         max_delta = max(delta)
-        succ_delta=(A.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
+        succ_delta = (A.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
 
         for column in A.columns[succ_delta:max_A]:       # per ogni colonna fra succ(max(delta)) e max(A)
 
-            gamma=delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
-            #print(gamma," gamma")
-            result=checka(gamma,setmhs)
-            names = result[1]  # result[1] ha il nome colonna gamma e valori
-            value = result[2]
-            #print("sto lavorando")
+            gamma = delta.join(A[column])                  # gamma dataframe unione fra delta e A[column]
+            # ----------- ?????? ----------------------
+            # result è OK, KO, MHS
+            # names contiene il nome della colonna MHS e OK
+            # value
+            result, names, value = checka(gamma, setmhs)
 
-            if result[0]=="OK" and not column==A.columns[-1]:    #result [0] ha l'esito
+            if result == "OK" and not column == A.columns[-1]:    #result ha l'esito
 
                 temp = {names: value}
                 df = pd.DataFrame(temp)
                 queue.put_nowait(df)
-            if result[0] == "MHS":
+            if result == "MHS":
                 setmhs.append(names)
                 print(names, " mhs")
-                count=count+1
+                count = count+1
 
 
         #print(delta, ' elem tolto')
