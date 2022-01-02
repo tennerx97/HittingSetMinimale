@@ -27,8 +27,8 @@ Card. massima degli mhs: 2
 Colonne eliminate: ['3(z3)', '6(z6)', '7(z7)', '8(z8)', '13(z13)', '14(z14)', '15(z15)', '16(z16)', '19(z19)', '20(z20)', '23(z23)', '26(z26)', '27(z27)', '28(z28)', '29(z29)', '30(z30)', '31(o1)']
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 0.15623736381530762 seconds
-Used memory:  59109376  byte
+Execution time: 0.16755366325378418 seconds
+Used memory:  64176128  byte
 Dimensione iniziale della matrice: (4, 33)
 Dimensione finale della matrice: (4, 16)
 ----------------------------------------------------------------------

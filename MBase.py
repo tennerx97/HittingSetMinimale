@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import asyncio,sys
+import asyncio,sys,time
 from checkmod import checka
 
 def max(x):
@@ -47,8 +47,9 @@ def MBase(A):
     A.insert(0, "zero", 0, allow_duplicates=False)
     queue.put_nowait(A['zero'])  # inserisce nella coda
     max_A=A.shape[1] # ultimo indice del dataframe per fare il ciclo pù tardi
+    start_time = time.time()
+    while not queue.empty() and time.time()-start_time<300:
 
-    while not queue.empty():
         delta = pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
         max_delta = max(delta)
         succ_delta = (A.columns.get_loc(max_delta))+1  # calcolo l'indice numerico della colonna successiva a delta
@@ -59,7 +60,7 @@ def MBase(A):
             # ----------- ?????? ----------------------
             # result è OK, KO, MHS
             # names contiene il nome della colonna MHS e OK
-            # value
+            # value contiene il vettore rappresentativo di gamma aggiornato
             result, names, value = checka(gamma, setmhs)
 
             if result == "OK" and not column == A.columns[-1]:    #result ha l'esito

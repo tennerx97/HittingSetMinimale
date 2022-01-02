@@ -26,7 +26,8 @@ def load_matrix():
         mat_data=mat[1:,:]                              #sottomatrice con i dati
         mat_names=mat[0,:]                              #riga con i nomi degli indici
         matrix_shape_start = (k-1,j)
-
+        dropped_columns=[]
+        dropped_rows=[]
         print("Eseguo le operazioni di preelaborazione...")
         mat_data, mat_names, dropped_columns, dropped_rows = pre_elab(mat_data, mat_names, k-1, j)
 

@@ -4,17 +4,15 @@ import numpy as np
 
 
 def checka(T, setmhs):
-    x_name = T.columns.values[0]
+    x_name = T.columns.values[0]                     # contiene il nome degli indici presenti nella prima colonna
+    x_val = np.array(T[x_name].values, dtype=object) # contiene il vellore rappresentativo della prima colonna
+    y_name = T.columns.values[1]                     # contiene il nome degli indici presenti nella seconda colonna
+    y_val = np.array(T[y_name].values, dtype=object) # contiene il vellore rappresentativo della seconda colonna
 
-    x_val = np.array(T[x_name].values, dtype=object)
-    y_name = T.columns.values[1]
-    y_val = np.array(T[y_name].values, dtype=object)
-    # print(type(x_name))
-    # print(type(y_name))
     variable_list=""
     z=""
 
-    if x_name == "zero":
+    if x_name == "zero":                             # nel caso iniziale a prima colonna è zero
         y_zeros = np.count_nonzero(y_val == '0')
         if y_zeros == len(y_val):
             res = "KO"
@@ -85,7 +83,8 @@ def build(val1, val2):  # creo i valori dell'array z
     return val1
 
 
-def sumstr(val1, val2):  # creo i valori dell'array z
+# funzione che crea combina i valori dei 2 vettore rappresentativi in ingresso
+def sumstr(val1, val2):
 
     z = np.array(val1, dtype=object)
     for i in range(len(val1)):
@@ -102,14 +101,12 @@ def sumstr(val1, val2):  # creo i valori dell'array z
             z[i] = 'x'
     return z
 
-
+# funzione che restituisce il numero di '0' presenti nel vettore rappresentativo
 def zeroCount(x):
     count = 0
     for elem in x:
-
         if elem == '0':
             count = count + 1
-    # print(count, x, "test")
     return count
 
 
@@ -136,12 +133,3 @@ z_name=set()
             else:
                 res="KO"
 '''
-
-
-def flatten(container):
-    for i in container:
-        if isinstance(i, (list, tuple)):
-            for j in flatten(i):
-                yield j
-        else:
-            yield i
