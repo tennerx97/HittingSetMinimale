@@ -48,7 +48,7 @@ def MBase(A):
     queue.put_nowait(A['zero'])  # inserisce nella coda
     max_A=A.shape[1] # ultimo indice del dataframe per fare il ciclo pù tardi
     start_time = time.time()
-    while not queue.empty() and time.time()-start_time<300:
+    while not queue.empty() and time.time()-start_time<10:
 
         delta = pd.DataFrame(queue.get_nowait())           # estraggo delta dalla coda
         max_delta = max(delta)

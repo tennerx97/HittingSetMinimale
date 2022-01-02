@@ -48,13 +48,16 @@ def checka(T, setmhs):
             # z_name = x_name,y_name
 
             # print("len z indez", len(z_name))
+            if not finalCheck(variable_list, z):
+                res = "KO"
+            '''
             if res == "MHS":
 
                 if finalCheck(variable_list, z):
                     res = "MHS"
                 else:
                     res = "KO"
-
+            '''
             Gamma = [variable_list, z]
         else:
             Gamma = ["", ""]
