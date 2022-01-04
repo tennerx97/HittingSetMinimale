@@ -6,9 +6,9 @@ import warnings
 
 
 warnings.filterwarnings("ignore")
-
 def main():
     start_time = time.time()
+
 
     # matrix è un Dataframe contenente la matrice presa in analisi
     # matrix_name è il nome del file da cui è stata caricata la matrice
@@ -27,18 +27,21 @@ def main():
 
     # count_mhs contiene il numero di mhs torvati in matrix
     # mhs_list è una lista che contiene gli mhs trovati
-    count_mhs, mhs_list = MBase(matrix)
+    #outOfTime indice se il limite di tempo dell'esecuzione è stato raggiunto
+    count_mhs, mhs_list, outOfTime = MBase(matrix)
 
     # calcola il tempo di esecuzione
     execution_time = time.time() - start_time
 
     # calcola la memoria usata
     process = psutil.Process(os.getpid())
-    memory_usage = process.memory_info().rss
+    memory_usage = process.memory_full_info().peak_wset
+
+
 
     # richiamo la funzione di output
     print_report(matrix_name, count_mhs, execution_time, memory_usage, matrix_shape_start, matrixShapeInit, mhs_list,
-                 dropped_name, dropped_row)
+                 dropped_name, dropped_row, outOfTime)
 
 if __name__ == "__main__":
     main()

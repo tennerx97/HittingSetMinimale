@@ -8,7 +8,6 @@ def load_matrix():
     matrix = open(matrix_path, "r")
     content = matrix.read()
     matrix.close()
-
     # pulisco la matrice inserita nella variabile content
     cleanedMatrix = clean_matrix(content)
 
