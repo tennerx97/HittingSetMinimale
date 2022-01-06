@@ -27,8 +27,9 @@ def load_matrix():
         matrix_shape_start = (k-1,j)
         dropped_columns=[]
         dropped_rows=[]
-        print("Eseguo le operazioni di preelaborazione...")
-        mat_data, mat_names, dropped_columns, dropped_rows = pre_elab(mat_data, mat_names, k-1, j)
+        if executePreElab:
+            print("Eseguo le operazioni di preelaborazione...")
+            mat_data, mat_names, dropped_columns, dropped_rows = pre_elab(mat_data, mat_names, k-1, j)
 
         # calcolo il vettore rappresentativo
         mat_data = rep_vect(mat_data,mat_names)

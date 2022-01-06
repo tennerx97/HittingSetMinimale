@@ -2,13 +2,15 @@ import numpy as np
 import pandas as pd
 import asyncio, sys, time
 from checkmod import checka
+from configuration import *
 
+def getCardinality(elem):
+    return len(str.split(elem, ","))
 
 def max(x):
     j = x.columns[-1]
     list = str.split(j, ",")
     return list[-1]
-
 
 def succ(x, df):
     flag = False
@@ -52,7 +54,6 @@ def MBase(A):
     queue.put_nowait(A['zero'])  # inserisce nella coda
     max_A = A.shape[1]  # ultimo indice del dataframe per fare il ciclo pù tardi
     start_time = time.time()
-    timeLimit=600      # limite di tempo massimo per ricercare mhs
     outOfTime = False   # indica se il tempo di ricerca ha superato il limite temporale
     while not queue.empty() and time.time() - start_time <= timeLimit:
 
@@ -80,9 +81,10 @@ def MBase(A):
                 count = count + 1
 
     searchTime=time.time() - start_time #tempo di ricerca
-    if searchTime>=timeLimit:
-        outOfTime=True
-
+    if searchTime >= timeLimit:
+        outOfTime = True
+        cardinalità_max_analizzata = getCardinality(str(gamma.columns[0]+','+gamma.columns[1]))
+        print("La cardinalità massima analizzzata è stata: ", cardinalità_max_analizzata)
 
         # print(delta, ' elem tolto')
         # for elem=succ(max(delta)) <= max(A):

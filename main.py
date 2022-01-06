@@ -37,8 +37,6 @@ def main():
     process = psutil.Process(os.getpid())
     memory_usage = process.memory_full_info().peak_wset
 
-
-
     # richiamo la funzione di output
     print_report(matrix_name, count_mhs, execution_time, memory_usage, matrix_shape_start, matrixShapeInit, mhs_list,
                  dropped_name, dropped_row, outOfTime)
