@@ -7,13 +7,13 @@ Card. minima degli mhs: 1
 Card. massima degli mhs: 2
 ----------------------------------------------------------------------
 Dimensione iniziale della matrice: (4, 33)
-Dimensione finale della matrice: (4, 33)
+Dimensione finale della matrice: (4, 16)
 
-Colonne eliminate: []
+Colonne eliminate: ['3(z3)', '6(z6)', '7(z7)', '8(z8)', '13(z13)', '14(z14)', '15(z15)', '16(z16)', '19(z19)', '20(z20)', '23(z23)', '26(z26)', '27(z27)', '28(z28)', '29(z29)', '30(z30)', '31(o1)']
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 0.4097104072570801 seconds
-Used memory:  56.53125  Megabyte
+Execution time: 0.1966407299041748 seconds
+Used memory:  56.76953125  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 

@@ -1,36 +1,31 @@
-import re
-
 import numpy as np
 
-
-def checka(T, setmhs):
+def checka(T):
     x_name = T.columns.values[0]                     # contiene il nome degli indici presenti nella prima colonna
     x_val = np.array(T[x_name].values, dtype=object) # contiene il vellore rappresentativo della prima colonna
     y_name = T.columns.values[1]                     # contiene il nome degli indici presenti nella seconda colonna
     y_val = np.array(T[y_name].values, dtype=object) # contiene il vellore rappresentativo della seconda colonna
 
-    variable_list=""
-    z=""
+    variable_list = ""                               # lista delle variabili in T
+    z = ""                                           # vettore rappresentativo dell'unione tra x_val e y_val
 
-    if x_name == "zero":                             # nel caso iniziale a prima colonna è zero
-        y_zeros = np.count_nonzero(y_val == '0')
+    if x_name == "zero":
+        y_zeros = np.count_nonzero(y_val == '0')     # nel caso iniziale la prima colonna è zero
+        # se y_val è una colonna nulla allora KO
         if y_zeros == len(y_val):
             res = "KO"
+        # se ci sono degli zero in y_val allora OK
         elif '0' in y_val:
             res = "OK"
+        # altrimenti non ci sono zero e ho trovato un MHS
         else:
             res = "MHS"
+        # se non ho KO aggiorno variable_list e z
         if res != "KO":
             variable_list = y_name
             z = y_val
-            Gamma = [variable_list, y_val]
-        else:
-            Gamma = ["", ""]
-
     else:
-        # z = np.sum([x_val, y_val], axis=0)
-        # print(x_val, y_val, "2 vett")
-
+        # ----------------- ??????? ----------------------------
         x_zeros = zeroCount(x_val)
         y_zeros = zeroCount(y_val)
         z = sumstr(x_val, y_val)

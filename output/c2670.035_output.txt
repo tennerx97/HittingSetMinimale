@@ -1,27 +1,33 @@
 ======================================================================
-			Matrix c432.044.
+			Matrix c2670.035
 ======================================================================
 ATTENZIONE: L'esecuzione ha superato il limite di tempo 
 ======================================================================
-3  mhs trovati:
+8  mhs trovati:
 
 Card. minima degli mhs: 4
 Card. massima degli mhs: 4
 
 Card. massima analizzata: 4
 ----------------------------------------------------------------------
-Dimensione iniziale della matrice: (35, 160)
-Dimensione finale della matrice: (35, 160)
+Dimensione iniziale della matrice: (6, 1193)
+Dimensione finale della matrice: (6, 1193)
 
 Colonne eliminate: []
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 300.3212859630585 seconds
-Used memory:  425.55078125  Megabyte
+Execution time: 300.5309431552887 seconds
+Pre elaboration time: -1 seconds
+Used memory:  61.39453125  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 
-3(z3),49(o1),98(o2),146(z143)
-3(z3),49(o1),98(o2),148(z145)
-3(z3),49(o1),98(o2),153(o4)
+12(z4),23(z7),382(z350),577(o122)
+12(z4),23(z7),430(o114),577(o122)
+12(z4),371(z339),382(z350),577(o122)
+12(z4),371(z339),430(o114),577(o122)
+12(z4),382(z350),427(o111),577(o122)
+12(z4),427(o111),430(o114),577(o122)
+23(z7),92(o93),382(z350),577(o122)
+23(z7),92(o93),430(o114),577(o122)
 ----------------------------------------------------------------------
