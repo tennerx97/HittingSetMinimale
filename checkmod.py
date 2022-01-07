@@ -24,64 +24,45 @@ def checka(T):
         if res != "KO":
             variable_list = y_name
             z = y_val
-    else:
-        # ----------------- ??????? ----------------------------
-        x_zeros = zeroCount(x_val)
+    else:                                  # casi successivi al primo ciclo while
+        x_zeros = zeroCount(x_val)         # conta i numeri di elementi del vettore rappresentativo che sono pari a zero
         y_zeros = zeroCount(y_val)
-        z = sumstr(x_val, y_val)
+        z = sumstr(x_val, y_val)           # calcola l'unione dei 2 vettori rappresentativi in ingresso
         z_zeros = zeroCount(z)
 
-        if x_zeros == z_zeros or y_zeros == '0':
+        # verifico se y_zeros è già mhs, o se non ci sono differenze fra il primo vettore rapresentativo del dataframe
+        # in ingresso è quello risultante calcolato in precedenza
+        if x_zeros == z_zeros or y_zeros == 0:
             res = "KO"
-        elif '0' in z:
+        elif '0' in z:                             # controllo se ci sono alcuni zero nel vettore rappresentativo di z
             res = "OK"
-        else:
+        else:                                      # negli altri casi z è MHS
             res = "MHS"
 
         if res != "KO":
-            variable_list = x_name + "," + y_name
-            # z_name = x_name,y_name
+            variable_list = x_name + "," + y_name    # aggiorno la lista delle variabili di T
 
-            # print("len z indez", len(z_name))
             if not finalCheck(variable_list, z):
                 res = "KO"
-            '''
-            if res == "MHS":
-
-                if finalCheck(variable_list, z):
-                    res = "MHS"
-                else:
-                    res = "KO"
-            '''
-            Gamma = [variable_list, z]
-        else:
-            Gamma = ["", ""]
 
     return res, variable_list, z
 
-
+# funzione che dato un vettore rappresentativo (z), e la lista con i nomi degli indici di T (names), verifica che
+# i nomi siano tutti presenti nel vettore rappresentativo
 def finalCheck(names, z):
     count = 0
     names = str.split(names, ",")
+    # per ogni elemento in names verifico che sia presente in z, e incremento un contatore
     for elem in names:
-
         if elem in z:
             count = count + 1
-    # print(count, names, z, "elem da vedere in z")
-    if count == len(names):
+    if count == len(names):           # verifico che il contatore è guale alla cardinalità dei nomi
         return True
     else:
         return False
 
 
-def build(val1, val2):  # creo i valori dell'array z
-    for i in range(len(val1)):
-        if not (val1[i] == '0' and val2[i] == '0'):
-            val1[i] = '1'
-    return val1
-
-
-# funzione che crea combina i valori dei 2 vettore rappresentativi in ingresso
+# funzione che crea un vettore rappresentativo z combinando i valori dei 2 vettori in ingresso
 def sumstr(val1, val2):
 
     z = np.array(val1, dtype=object)
@@ -106,28 +87,3 @@ def zeroCount(x):
         if elem == '0':
             count = count + 1
     return count
-
-
-'''
-z_name=set()
-            z_name.add(x_name)
-            z_name.add(y_name)
-            z_name = [val for sublist in z_name for val in sublist]
-            count=0
-            notmhs=False
-            for ind in setmhs:
-                if len(ind)>1:
-                    ind  = [val for sublist in ind for val in sublist]
-                for indx in ind:
-                    print(ind," ind")
-                    if indx in z_name:
-                        count=count+1
-                    if count == len(ind):
-                        notmhs=True
-                        break
-                count=0
-            if not notmhs:
-                res="MHS"
-            else:
-                res="KO"
-'''

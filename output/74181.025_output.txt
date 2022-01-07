@@ -12,9 +12,9 @@ Dimensione finale della matrice: (10, 65)
 Colonne eliminate: []
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 102.82802176475525 seconds
+Execution time: 111.00813388824463 seconds
 Pre elaboration time: -1 seconds
-Used memory:  70.44921875  Megabyte
+Used memory:  74.625  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 
