@@ -1,38 +1,22 @@
 ======================================================================
-			Matrix 74L85.002
+			Matrix c7552.005
 ======================================================================
-17  mhs trovati:
+1  mhs trovati:
 
 Card. minima degli mhs: 1
-Card. massima degli mhs: 2
+Card. massima degli mhs: 1
 ----------------------------------------------------------------------
-Dimensione iniziale della matrice: (4, 33)
-Dimensione finale della matrice: (4, 33)
+Dimensione iniziale della matrice: (1, 3512)
+Dimensione finale della matrice: (1, 3512)
 
 Colonne eliminate: []
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 0.3437223434448242 seconds
+Execution time: 2.7966532707214355 seconds
 Pre elaboration time: -1 seconds
-Used memory:  56.4765625  Megabyte
+Used memory:  62.8046875  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 
-9(z9)
-10(z10)
-17(z17)
-24(z24)
-32(o2)
-1(z1),2(z2)
-1(z1),4(z4)
-1(z1),21(z21)
-1(z1),33(o3)
-2(z2),4(z4)
-2(z2),22(z22)
-4(z4),5(z5)
-4(z4),11(z11)
-4(z4),12(z12)
-4(z4),18(z18)
-4(z4),25(z25)
-4(z4),33(o3)
+26(o23)
 ----------------------------------------------------------------------

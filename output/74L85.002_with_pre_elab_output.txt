@@ -12,9 +12,9 @@ Dimensione finale della matrice: (4, 16)
 Colonne eliminate: ['3(z3)', '6(z6)', '7(z7)', '8(z8)', '13(z13)', '14(z14)', '15(z15)', '16(z16)', '19(z19)', '20(z20)', '23(z23)', '26(z26)', '27(z27)', '28(z28)', '29(z29)', '30(z30)', '31(o1)']
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 0.14760160446166992 seconds
-Pre elaboration time: 0.0019893646240234375 seconds
-Used memory:  61.59765625  Megabyte
+Execution time: 0.14061546325683594 seconds
+Pre elaboration time: 0.0 seconds
+Used memory:  56.703125  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 

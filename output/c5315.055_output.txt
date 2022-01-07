@@ -1,0 +1,19 @@
+======================================================================
+			Matrix c5315.055
+======================================================================
+ATTENZIONE: L'esecuzione ha superato il limite di tempo 
+======================================================================
+0  mhs trovati:
+
+Card. massima analizzata: 3
+----------------------------------------------------------------------
+Dimensione iniziale della matrice: (22, 2307)
+Dimensione finale della matrice: (22, 2307)
+
+Colonne eliminate: []
+Righe eliminate: []
+----------------------------------------------------------------------
+Execution time: 300.6726849079132 seconds
+Pre elaboration time: -1 seconds
+Used memory:  123.96875  Megabyte
+----------------------------------------------------------------------

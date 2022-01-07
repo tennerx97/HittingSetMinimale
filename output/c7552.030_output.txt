@@ -1,0 +1,19 @@
+======================================================================
+			Matrix c7552.030
+======================================================================
+ATTENZIONE: L'esecuzione ha superato il limite di tempo 
+======================================================================
+0  mhs trovati:
+
+Card. massima analizzata: 2
+----------------------------------------------------------------------
+Dimensione iniziale della matrice: (17, 3512)
+Dimensione finale della matrice: (17, 3512)
+
+Colonne eliminate: []
+Righe eliminate: []
+----------------------------------------------------------------------
+Execution time: 301.05715012550354 seconds
+Pre elaboration time: -1 seconds
+Used memory:  150.89453125  Megabyte
+----------------------------------------------------------------------
