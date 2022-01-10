@@ -39,9 +39,13 @@ def main():
         process = psutil.Process(os.getpid())
         memory_usage = process.memory_full_info().peak_wset
 
-        # richiamo la funzione di output
+        # richiamo la funzione di output su file
         print_report(matrix_name, count_mhs, execution_time, memory_usage, matrix_shape_start, matrixShapeInit, mhs_list,
                      dropped_name, dropped_row, outOfTime, card_max_analizzata, pre_elab_time)
+
+        # aggiorno il csv con i risultati
+        write_csv(matrix_name, execution_time, memory_usage, matrix_shape_start, outOfTime, pre_elab_time, preElab)
+        #clean_csv()
 
 if __name__ == "__main__":
     main()

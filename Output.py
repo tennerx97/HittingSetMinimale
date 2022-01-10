@@ -1,3 +1,5 @@
+import pandas as pd
+
 from MBase import getCardinality
 from configuration import *
 
@@ -43,3 +45,35 @@ def print_report(matrix_name, count_mhs, execution_time, memory_usage, matrix_sh
                 print(str(elem), file=f)
             print("----------------------------------------------------------------------", file=f)
     f.close()
+
+def write_csv(matrix_name, execution_time, memory_usage, matrix_shape_start, outOfTime, pre_elab_time, preElab):
+    df = pd.read_csv('mhs_results - Foglio1.csv')
+    add_row = True
+    execution_time = round(execution_time, 2)
+    memory_usage = round(memory_usage/(1024*1024), 2)
+    pre_elab_time = round(pre_elab_time, 2)
+    for matrix in df['Matrix']:
+        if matrix_name == matrix:
+            idx = df.index[df['Matrix'] == matrix_name]
+            if preElab:
+                df.loc[idx, ['Execution Time pre_elab', 'Used memory pre_elab', 'Pre elaboration time',
+                             'Out of Time pre_elab']] = [execution_time, memory_usage, pre_elab_time, outOfTime]
+            else:
+                df.loc[idx, ['Execution Time MBase', 'Used memory MBase', 'Out of Time MBase']] = \
+                    [execution_time, memory_usage, outOfTime]
+            add_row = False
+            break
+    if add_row:
+        df2 = {'Matrix': matrix_name, 'Execution Time MBase': execution_time, 'Used memory MBase': memory_usage,
+            'Out of Time MBase': outOfTime, 'Rows': int(matrix_shape_start[0]), 'Columns': int(matrix_shape_start[1])}
+        df = df.append(df2, ignore_index=True)
+    df.to_csv('mhs_results - Foglio1.csv', index=False)
+
+def clean_csv():
+    df = pd.read_csv('mhs_results - Foglio1.csv')
+    df['Execution Time MBase'] = df['Execution Time MBase'].apply(lambda x: float(x.replace(',', '.')))
+    df['Execution Time pre_elab'] = df['Execution Time pre_elab'].apply(lambda x: float(x.replace(',', '.')))
+    df['Used memory MBase'] = df['Used memory MBase'].apply(lambda x: float(x.replace(',', '.')))
+    df['Used memory pre_elab'] = df['Used memory pre_elab'].apply(lambda x: float(x.replace(',', '.')))
+    df['Pre elaboration time'] = df['Pre elaboration time'].apply(lambda x: float(x.replace(',', '.')))
+    df.to_csv('mhs_results - Foglio1.csv', index=False)

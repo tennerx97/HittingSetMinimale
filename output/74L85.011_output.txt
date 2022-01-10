@@ -1,10 +1,10 @@
 ======================================================================
-			Matrix 74L85.002
+			Matrix 74L85.011
 ======================================================================
-17  mhs trovati:
+13  mhs trovati:
 
-Card. minima degli mhs: 1
-Card. massima degli mhs: 2
+Card. minima degli mhs: 2
+Card. massima degli mhs: 3
 ----------------------------------------------------------------------
 Dimensione iniziale della matrice: (4, 33)
 Dimensione finale della matrice: (4, 33)
@@ -12,27 +12,23 @@ Dimensione finale della matrice: (4, 33)
 Colonne eliminate: []
 Righe eliminate: []
 ----------------------------------------------------------------------
-Execution time: 0.49985527992248535 seconds
+Execution time: 0.46335482597351074 seconds
 Pre elaboration time: -1 seconds
-Used memory:  56.671875  Megabyte
+Used memory:  56.8046875  Megabyte
 ----------------------------------------------------------------------
 Lista degli mhs trovati: 
 
-9(z9)
-10(z10)
-17(z17)
-24(z24)
-32(o2)
-1(z1),2(z2)
-1(z1),4(z4)
-1(z1),21(z21)
-1(z1),33(o3)
-2(z2),4(z4)
-2(z2),22(z22)
-4(z4),5(z5)
-4(z4),11(z11)
-4(z4),12(z12)
-4(z4),18(z18)
-4(z4),25(z25)
-4(z4),33(o3)
+22(z22),31(o1)
+24(z24),31(o1)
+26(z26),31(o1)
+28(z28),31(o1)
+29(z29),31(o1)
+31(o1),32(o2)
+1(z1),4(z4),31(o1)
+1(z1),8(z8),31(o1)
+4(z4),8(z8),31(o1)
+4(z4),9(z9),31(o1)
+4(z4),17(z17),31(o1)
+8(z8),9(z9),31(o1)
+8(z8),17(z17),31(o1)
 ----------------------------------------------------------------------
